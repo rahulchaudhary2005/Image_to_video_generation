@@ -1,43 +1,46 @@
-📸 AI Image-to-Video Generator (Wan 2.2 I2V)
+# 📸 AI Image-to-Video Generator (Wan 2.2 I2V)
 
-Transform any image into a cinematic AI video using diffusion models and motion interpolation.
+Transform any image into a **cinematic AI video** using diffusion models and motion interpolation.
 
-This project uses the Wan 2.2 Image-to-Video (14B) model with FP8 quantization and AoT compilation to generate smooth animated videos from a single image and text prompt.
+This project leverages the **Wan 2.2 Image-to-Video (14B) diffusion model** with **FP8 quantization** and **AoT compiled transformer blocks** to generate smooth animated videos from a single image and a text prompt.
 
-🚀 Demo
+The system combines **diffusion-based motion synthesis, frame interpolation, and GPU optimization techniques** to produce high-quality animated clips efficiently.
 
-Example inputs used in the project:
+---
 
-cinematic action scene
+# 🚀 Demo
 
-stylish selfie cat
+Example input images used in this project:
 
-astronauts exploring a moon base
+* Cinematic action scene
+* Stylish selfie cat
+* Astronauts exploring a moon base
 
-These images are animated into short videos using a text prompt.
+These images are animated into **short cinematic videos using text prompts**.
 
-✨ Features
+---
 
-🖼️ Image → Video generation
+# ✨ Features
 
-🎬 Text-guided animation
+* 🖼️ **Image → Video Generation**
+* 🎬 **Text-Guided Animation**
+* ⚡ **FP8 Quantized Diffusion Model**
+* 🎥 **Frame Interpolation using RIFE**
+* 🎛️ **Advanced Inference Controls**
+* 🌐 **Interactive Gradio Web Interface**
+* 📦 **Optimized for HuggingFace Spaces / ZeroGPU**
 
-⚡ FP8 quantized diffusion model
+---
 
-🎥 Frame interpolation using RIFE
+# 🧠 Model
 
-🎛️ Advanced inference controls
+This project uses the **Wan 2.2 Image-to-Video (I2V) Diffusion Model**.
 
-🌐 Interactive Gradio Web UI
+The model generates intermediate frames from a static image and then enhances temporal smoothness using motion interpolation.
 
-📦 Optimized for HuggingFace Spaces / ZeroGPU
+### Main Pipeline
 
-🧠 Model
-
-This project uses the Wan 2.2 Image-to-Video (I2V) diffusion model.
-
-Main pipeline:
-
+```
 Input Image
      │
      ▼
@@ -54,10 +57,15 @@ RIFE Frame Interpolation
      │
      ▼
 Final Video Rendering
+```
 
-The model generates video frames and then improves motion smoothness using interpolation.
+The diffusion model generates video frames and **RIFE improves motion smoothness by estimating motion between frames**.
 
-🏗️ Architecture
+---
+
+# 🏗️ System Architecture
+
+```
 User Input
    │
    ▼
@@ -79,8 +87,14 @@ RIFE Frame Interpolation
 Video Encoding (FFmpeg)
    │
    ▼
-Output Video
-📂 Project Structure
+Final Output Video
+```
+
+---
+
+# 📂 Project Structure
+
+```
 AI-Image-To-Video/
 │
 ├── app.py                # Main Gradio application
@@ -95,132 +109,183 @@ AI-Image-To-Video/
 │   └── input3.jpg
 │
 └── train_log/
-    └── RIFE_HDv3.py
-⚙️ Installation
-1️⃣ Clone the repository
-git clone https://github.com/rahulchaudhary2005/ai-image-to-video.git
+    └── RIFE_HDv3.py      # Frame interpolation model
+```
+
+---
+
+# ⚙️ Installation
+
+## 1️⃣ Clone the Repository
+
+```
+git clone https://github.com/rahulchaudhary2005/Image_to_video_generation.git
 
 cd ai-image-to-video
-2️⃣ Install dependencies
+```
+
+---
+
+## 2️⃣ Install Python Dependencies
+
+```
 pip install -r requirements.txt
+```
 
-Dependencies include libraries like Diffusers, Transformers, TorchAO and OpenCV.
+This installs required libraries such as:
 
-3️⃣ Install system packages
+* Diffusers
+* Transformers
+* TorchAO
+* OpenCV
+* Gradio
+
+---
+
+## 3️⃣ Install System Dependency
+
+```
 ffmpeg
+```
 
-This project uses FFmpeg for video rendering.
+FFmpeg is used for **video rendering and encoding**.
 
-4️⃣ Run the application
+---
+
+## 4️⃣ Run the Application
+
+```
 python app.py
+```
 
-The Gradio interface will launch in your browser.
+The **Gradio web interface** will launch automatically in your browser.
 
-🎮 Usage
+---
 
-1️⃣ Upload an image
-2️⃣ Enter a motion prompt
+# 🎮 Usage
+
+### Step 1
+
+Upload an **input image**.
+
+### Step 2
+
+Enter a **motion prompt**.
 
 Example:
 
+```
 make this image come alive, cinematic motion, smooth animation
+```
 
-3️⃣ Adjust settings:
+### Step 3
 
-inference steps
+Adjust generation settings:
 
-duration
+* Inference steps
+* Video duration
+* Guidance scale
+* FPS multiplier
 
-guidance scale
+### Step 4
 
-video FPS
+Click **Generate Video**.
 
-4️⃣ Click Generate Video
+The system will generate an animated video clip.
 
-The system will generate an animated video.
+---
 
-🎛️ Advanced Settings
+# 🎛️ Advanced Settings
 
-The interface allows advanced control over generation:
+| Parameter      | Description               |
+| -------------- | ------------------------- |
+| Steps          | Diffusion inference steps |
+| Guidance Scale | Prompt strength           |
+| Duration       | Length of generated video |
+| FPS Multiplier | Motion smoothness         |
+| Scheduler      | Diffusion sampling method |
+| Seed           | Reproducibility           |
 
-Parameter	Description
-Steps	Diffusion inference steps
-Guidance Scale	Prompt strength
-Duration	Video length
-FPS Multiplier	Smooth motion
-Scheduler	Diffusion sampling method
-Seed	Reproducibility
-📊 Core Technologies
+---
 
-This project combines multiple AI and multimedia tools:
+# 📊 Core Technologies
 
-Technology	Purpose
-PyTorch	Deep learning framework
-Diffusers	Diffusion model pipeline
-TorchAO	Model quantization
-Gradio	Web UI
-OpenCV	Frame processing
-RIFE	Frame interpolation
-FFmpeg	Video rendering
-⚡ Optimization Techniques
+| Technology | Purpose                  |
+| ---------- | ------------------------ |
+| PyTorch    | Deep learning framework  |
+| Diffusers  | Diffusion model pipeline |
+| TorchAO    | Model quantization       |
+| Gradio     | Interactive UI           |
+| OpenCV     | Frame processing         |
+| RIFE       | Frame interpolation      |
+| FFmpeg     | Video rendering          |
 
-To improve performance the project uses:
+---
 
-FP8 quantization
+# ⚡ Optimization Techniques
 
-AoT compiled blocks
+This project implements several performance optimizations:
 
-scheduler optimization
+* **FP8 Quantization**
+* **AoT Compiled Transformer Blocks**
+* **Scheduler Optimization**
+* **Frame Interpolation instead of full frame generation**
 
-frame interpolation instead of generating extra frames
+These optimizations significantly **reduce GPU memory usage and inference time**.
 
-These reduce GPU requirements significantly.
+---
 
-🖼 Example Use Cases
+# 🖼 Example Use Cases
 
-AI animation
+* AI animation generation
+* Content creation
+* Generative filmmaking
+* Social media video clips
+* Game concept visualization
 
-content creation
+---
 
-generative filmmaking
+# 🔮 Future Improvements
 
-social media clips
+Planned upgrades include:
 
-game concept visualization
+* Video-to-Video generation
+* Longer video duration
+* Motion control prompts
+* Camera movement control
+* 3D scene generation
 
-🔮 Future Improvements
+---
 
-Planned upgrades:
-
-video-to-video generation
-
-longer video generation
-
-motion control
-
-camera movement prompts
-
-3D scene generation
-
-🤝 Contributing
+# 🤝 Contributing
 
 Contributions are welcome!
 
-fork → branch → commit → pull request
-📜 License
+```
+Fork → Branch → Commit → Pull Request
+```
+
+---
+
+# 📜 License
 
 This project follows the license of the underlying models and libraries.
 
-⭐ Support
+---
+
+# ⭐ Support
 
 If you find this project useful:
 
 ⭐ Star the repository
-🍴 Fork it
-📢 Share it
+🍴 Fork the project
+📢 Share it with the community
 
-👨‍💻 Author
+---
 
-Rahul chaudhary AIML Engineer
+# 👨‍💻 Author
 
-Built with ❤️ using diffusion models and generative AI.
+**Rahul Chaudhary**
+AI / ML Engineer
+
+Built with ❤️ using **diffusion models and generative AI**.
