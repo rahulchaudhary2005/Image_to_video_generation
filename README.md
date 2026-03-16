@@ -98,7 +98,7 @@ AI-Image-To-Video/
     └── RIFE_HDv3.py
 ⚙️ Installation
 1️⃣ Clone the repository
-git clone https://github.com/yourusername/ai-image-to-video.git
+git clone https://github.com/rahulchaudhary2005/ai-image-to-video.git
 
 cd ai-image-to-video
 2️⃣ Install dependencies
